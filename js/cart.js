@@ -81,7 +81,7 @@ function orderHandler(event){
   localStorage.removeItem('cart');
   var confirm = document.createElement('section');
   confirm.id = "confirm";
-  confirm.textContent = 'confirmed';
+  confirm.textContent = 'Order Confirmed';
   mainEl.append(confirm);
   submitButton.removeEventListener('click', orderHandler);
 }
