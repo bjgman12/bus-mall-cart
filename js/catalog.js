@@ -27,11 +27,12 @@ function handleSubmit(event) {
   event.preventDefault();
   // Do all the things ...
   addSelectedItemToCart();
+
   cart.saveToLocalStorage();
   updateCounter();
   updateCartPreview();
-
 }
+
 
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
@@ -39,10 +40,15 @@ function addSelectedItemToCart() {
   var selectedItem = selectElement.value;
   // TODO: get the quantity
   var quantity = document.getElementById('quantity').value;
+ 
   // TODO: using those, add one item to the Cart
+  if (quantity < 1){
+    alert(`Please enter a valid amount`);
+  } else {
   var newCartItem = new CartItem(selectedItem, quantity);
   cart.items.push(newCartItem);
-  console.log(cart);
+  // console.log(cart);
+  }
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
@@ -58,17 +64,19 @@ function updateCartPreview() {
   var preview = document.getElementById('cartContents');
   preview.innerHTML = '';
   for (var i in cart.items ){
+    var previewFig = document.createElement('figure');
     var previewItem = document.createElement('h3');
     previewItem.textContent = `${cart.items[i].product} ${cart.items[i].quantity}`;
-    preview.appendChild(previewItem);
-  }
-  for (var j = 0 ; j < cart.items.length ; j++){
-    if (cart.items[j].product === Product.allProducts[j].name){
-      var productImg = document.createElement('img');
-      // console.log(Product.allProducts[i].filepath);
-      productImg.src = Product.allProducts[j].filePath;
-      preview.appendChild(productImg);
+    var productImg = document.createElement('img');
+ 
+    for (var j in Product.allProducts){
+      if (Product.allProducts[j].name === cart.items[i].product){
+        productImg.src = Product.allProducts[j].filePath;
+      }
     }
+    preview.append(previewFig);
+    previewFig.appendChild(previewItem);
+    previewFig.appendChild(productImg);
   }
 }
 
@@ -79,5 +87,12 @@ var catalogForm = document.getElementById('catalog');
 catalogForm.addEventListener('submit', handleSubmit);
 
 // Before anything else of value can happen, we need to fill in the select
+var getStorage = JSON.parse(localStorage.getItem('cart'));
+if (getStorage){
+  cart.items = getStorage;
+  updateCounter();
+  updateCartPreview();
+}
+
 // drop down list in the form.
 populateForm();

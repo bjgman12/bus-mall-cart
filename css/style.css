@@ -1,1 +1,123 @@
 /* TODO: Make it awesome */
+
+
+/* TODO: Make it awesome */
+
+* {
+  box-sizing: border-box;
+}
+body {
+  background: lightgray;
+  text-align: center;
+}
+
+main {
+  background: white;
+  width: 80%;
+  margin: 10px auto;
+  padding: 20px;
+}
+
+header {
+  width: 80%;
+  margin: 10px auto;
+  background: white;
+  padding: 10px;
+}
+header > h1 {
+  font-size: x-large;
+}
+header > nav li { 
+  display: inline-block;
+  margin: 10px 30px;
+}
+#itemCount {
+  margin-left: 5px;
+  background: white;
+  padding: 1px 5px;
+  border: 1px solid black;
+  border-radius: 50px;
+}
+
+
+img {
+  height: 120px;
+  border: 1px solid black;
+}
+h3 {
+  margin: 5px;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+#cartContents figure {
+  display: inline-block;
+  margin: 10px;
+}
+
+.deck {
+  margin: 15px;
+}
+
+#catalog {
+  margin: 15px;
+}
+div > header > h1 {
+  font-size: x-large;
+}
+
+#cart {
+  width: 50%;
+  margin: 10px auto;
+  text-align: left;
+  background: lightgray;
+}
+#cart th {
+  padding: 5px;
+  border: 1px solid black;
+}
+#cart td {
+  padding: 5px;
+  border: 1px solid black;
+}
+#cart  tr > td:first-child:hover {
+  cursor: pointer;
+}
+
+#submitButton {
+  border: 1px solid black;
+  background: lightgrey;
+  padding: 10px;
+  width: 100px;
+  margin: auto;
+  transition: .7s;
+}
+#submitButton:hover {
+  cursor: pointer;
+  background: red;
+  transition: .7s;
+}
+
+@keyframes bounce{
+  0% {
+    left: 0px;
+  }
+  50% {
+    left: -initial;
+  }
+  100% {
+    left: 10px;
+  }
+}
+
+#confirm {
+  margin: 10px auto;
+  border: 1px solid black;
+  border-radius: 15px;
+  background: lightblue;
+  width: 300px;
+  padding: 10px;
+  position: relative;
+  -webkit-animation: bounce .3s ease 6 alternate;
+  animation: bounce .3s ease 6 alternate;
+}
